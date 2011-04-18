@@ -29,7 +29,7 @@
     <parent>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-parent</artifactId>
-        <version>3.6.3.Final</version>
+        <version>3.6.3.NMP.20110318</version>
         <relativePath>../hibernate-parent/pom.xml</relativePath>
     </parent>
 
@@ -148,6 +148,16 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>0.5.1-devel</version>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+            <version>1.0.1-rc4</version>
         </dependency>
     </dependencies>
 
