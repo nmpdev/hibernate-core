@@ -23,6 +23,7 @@
  */
 package org.hibernate.cache.entry;
 
+import java.io.Externalizable;
 import java.io.Serializable;
 
 import org.hibernate.AssertionFailure;
@@ -35,13 +36,15 @@ import org.hibernate.event.PreLoadEventListener;
 import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.type.TypeHelper;
 import org.hibernate.util.ArrayHelper;
+import org.msgpack.MessagePackable;
+import org.msgpack.MessageUnpackable;
 
 /**
  * A cached instance of a persistent class
  *
  * @author Gavin King
  */
-public final class CacheEntry implements Serializable {
+public final class CacheEntry implements Serializable, Externalizable, MessagePackable, MessageUnpackable {
 
 	private final Serializable[] disassembledState;
 	private final String subclass;
@@ -55,7 +58,11 @@ public final class CacheEntry implements Serializable {
 	public boolean areLazyPropertiesUnfetched() {
 		return lazyPropertiesAreUnfetched;
 	}
-	
+
+    public CacheEntry() {
+
+    }
+
 	public CacheEntry(
 			final Object[] state, 
 			final EntityPersister persister, 
